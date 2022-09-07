@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:59:57 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/05 12:08:29 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/07 11:24:39 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	render(t_fdf *fdf)
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, fdf->map.width, fdf->map.height, "FDF");
-	//mlx_win = mlx_new_window(mlx, 3000, 2000, "FDF");
+	//mlx_win = mlx_new_window(mlx, 900, 900, "FDF");
 	fdf->data.img = mlx_new_image(mlx, fdf->map.width, fdf->map.height);
 	fdf->data.addr = mlx_get_data_addr(fdf->data.img, &fdf->data.bits_per_pixel, 
 		&fdf->data.line_length, &fdf->data.endian);

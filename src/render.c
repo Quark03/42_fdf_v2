@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:31:26 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/05 12:00:09 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/07 11:42:39 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ t_vect2	isometric_point(t_fdf *fdf, t_vect3 point)
 {
 	t_vect2	p;
 
-	p.x = (point.x * 1 * 20) + (point.y * -1 * 20) - (point.z * 0.5 * 20);
-	p.y = (point.x * 0.5 * 20) + (point.y * 0.5 * 20) - (point.z * 0.5 * 20);
+	// p.x = (point.x * 1 * 20) + (point.y * -1 * 20) - (point.z * 0.5 * 20);
+	// p.y = (point.x * 0.5 * 20) + (point.y * 0.5 * 20) - (point.z * 0.5 * 20);
+	p.x = (point.x * 1 * 20) + (point.y * -1 * 20);
+	p.y = (point.x * 0.5 * 20) + (point.y * 0.5 * 20) - (point.z * 10);
 	p.color = point.color;
 
 	p.x += fdf->map.width / 2;
-	p.y += fdf->map.height / 8;
+	p.y += fdf->map.height / 3;
 	pixel_put(fdf, p);
 	return (p);
 }

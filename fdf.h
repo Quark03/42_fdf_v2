@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 11:13:33 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/01 11:43:34 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/07 11:00:34 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,8 @@ void	pixel_put(t_fdf *fdf, t_vect2 point);
 void	render_map(t_fdf *fdf);
 
 // utils.c
-// void	points_rotate(t_2d *dest, t_2d *src, t_map *map, int size);
 int		count_points(char *file);
 void	print_3d_points(t_vect3 *points, int size);
 void	print_2d_points(t_vect2 *points, int size);
-int		abs(int nbr);
 
 #endif

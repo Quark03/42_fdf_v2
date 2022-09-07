@@ -6,39 +6,11 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:10:05 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/08/30 11:38:42 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/07 11:44:07 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
-
-/**
- * Orders the points by y value;
- */
-
-/*
-void	points_rotate(t_2d *dest, t_2d *src, t_map *map, int size)
-{
-	int	col;
-	int	counter;
-	int	vec;
-
-	col = 0;
-	counter = 0;
-	while (col < map->cols)
-	{
-		vec = col;
-		while (vec < size)
-		{
-			dest[counter] = src[vec];
-			dest[counter].color = 0x85fc30;
-			counter++;
-			vec += map->cols;
-		}
-		col++;
-	}
-}
-*/
 
 /**
  * Count the amount of points to process
@@ -114,16 +86,4 @@ void	print_2d_points(t_vect2 *points, int size)
 		ft_putstr_fd("\n", 1);
 		i++;
 	}
-}
-
-/**
- * Return the absolute value of a number
- * @param nbr
- * @return int
- */
-int	abs(int nbr)
-{
-	if (nbr < 0)
-		return (nbr * -1);
-	return (nbr);
 }
