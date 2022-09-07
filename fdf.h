@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 11:13:33 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/07 11:00:34 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:20:47 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ typedef struct s_data {
 }	t_data;
 
 typedef struct s_fdf {
-	int	file;
+	void	*mlx;
+	void	*mlx_win;
+	int		file;
 	t_vect3	*points3;
 	t_vect2	*points2;
-	int	points_size;
+	int		points_size;
 	t_map	map;
 	t_data	data;
 }	t_fdf;
@@ -71,9 +73,18 @@ typedef struct s_fdf {
 // gnl.c
 char	*get_next_line(int fd);
 
+// keys.c
+int		key_hook(int keycode, t_fdf *fdf);
+
+// lines.c
+void	render_lines(t_fdf *fdf);
+
 // main.c
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	render(t_fdf *fdf);
+void	create_window(t_fdf *fdf);
+
+// mouse.c
+int		mouse_hook(int keycode, t_fdf *fdf);
 
 // parse.c
 void	parse_file(t_fdf *fdf);

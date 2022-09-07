@@ -6,60 +6,30 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:59:57 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/07 11:24:39 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:21:59 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void	walk_array(t_fdf *fdf, t_vect2 vect, int offset, int jump)
-{
-	int	i;
-
-	i = 0;
-	while (vect.y + i < fdf->points_size)
-	{
-		if (jump == -1) 
-			plot_line(fdf, fdf->points2[vect.x + i], fdf->points2[vect.y + i]);
-		else
-		{
-			if ((i + offset) % jump != 0)
-				plot_line(fdf, fdf->points2[vect.x + i], fdf->points2[vect.y + i]);
-		}
-		i++;
-	}
-}
-
-void	render_lines(t_fdf *fdf)
-{
-	t_vect2 rel;
-
-	rel.x = 0;
-	rel.y = 1;
-	walk_array(fdf, rel, 1, fdf->map.cols);
-	rel.y = fdf->map.cols;
-	walk_array(fdf, rel, 0, -1);
-}
-
 /**
  * Render the window
  */
-void	render(t_fdf *fdf)
+void	create_window(t_fdf *fdf)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, fdf->map.width, fdf->map.height, "FDF");
+	fdf->mlx = mlx_init();
+	fdf->mlx_win = mlx_new_window(fdf->mlx, fdf->map.width, fdf->map.height, "FDF");
 	//mlx_win = mlx_new_window(mlx, 900, 900, "FDF");
-	fdf->data.img = mlx_new_image(mlx, fdf->map.width, fdf->map.height);
+	fdf->data.img = mlx_new_image(fdf->mlx, fdf->map.width, fdf->map.height);
 	fdf->data.addr = mlx_get_data_addr(fdf->data.img, &fdf->data.bits_per_pixel, 
 		&fdf->data.line_length, &fdf->data.endian);
+	mlx_key_hook(fdf->mlx_win, key_hook, fdf);
+	mlx_mouse_hook(fdf->mlx_win, mouse_hook, fdf);
 	render_map(fdf);
 	ft_putstr_fd("Drawing ......\n", 1);
 	render_lines(fdf);
-	mlx_put_image_to_window(mlx, mlx_win, fdf->data.img, 0, 0);
-	mlx_loop(mlx);
+	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->data.img, 0, 0);
+	mlx_loop(fdf->mlx);
 }
 
 
@@ -82,7 +52,7 @@ int	main(int ac, char **av)
 	ft_putstr_fd("Parsing ......\n", 1);
 	parse_file(&fdf);
 	ft_putstr_fd("Rendering ......\n", 1);
-	render(&fdf);
+	create_window(&fdf);
 	free(fdf.points3);
 	free(fdf.points2);
 	return (0);

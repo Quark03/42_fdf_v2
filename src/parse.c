@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 08:57:58 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/07 11:25:16 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:04:26 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void	parse_file(t_fdf *fdf)
 		fdf->map.rows++;
 	}
 	fdf->map.width = 900;
-	fdf->map.height = 900;
+	fdf->map.height = 800;
 }

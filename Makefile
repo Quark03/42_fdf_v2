@@ -1,7 +1,10 @@
 NAME = fdf
 
 SRCS =  ./src/gnl.c \
+		./src/keys.c \
+		./src/lines.c \
 		./src/main.c \
+		./src/mouse.c \
 		./src/parse.c \
 		./src/plot.c \
 		./src/render.c \
