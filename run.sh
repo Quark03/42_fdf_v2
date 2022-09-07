@@ -1,1 +1,1 @@
-clear && make re && ./fdf $1
+clear && make re && ./fdf ./maps/$1
