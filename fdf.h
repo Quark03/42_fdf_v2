@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 11:13:33 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 15:17:40 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:47:36 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ void	render_map(t_fdf *fdf);
 // utils.c
 int		count_points(char *file);
 int		is_valid_point(t_fdf *fdf, t_vect2 point);
+void	plot_points(void);
 
 #endif

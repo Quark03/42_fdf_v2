@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:10:05 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 15:13:21 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:48:15 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,16 @@ int	is_valid_point(t_fdf *fdf, t_vect2 point)
 		return (0);
 	}
 	return (0);
+}
+
+/**
+ * Plot the points
+ */
+void	plot_points(void)
+{
+	int	i;
+
+	i = 0;
+	while (i < fdf()->points_size)
+		pixel_put(fdf(), fdf()->points2[i++]);
 }
