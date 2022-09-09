@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 11:12:52 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 15:08:48 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:13:02 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	plot_line(t_fdf *fdf, t_vect2 initial, t_vect2 final)
 	vars.y0 = initial.y;
 	vars.x1 = final.x;
 	vars.y1 = final.y;
-	if (isValidPoint(fdf, initial) || isValidPoint(fdf, final))
+	if (is_valid_point(fdf, initial) || is_valid_point(fdf, final))
 	{
 		if (abs(vars.y1 - vars.y0) < abs(vars.x1 - vars.x0))
 		{

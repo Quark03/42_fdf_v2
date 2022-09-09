@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:31:26 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 15:10:28 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:12:52 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	pixel_put(t_fdf *fdf, t_vect2 point)
 {
 	char	*dst;
 
-	if (isValidPoint(fdf, point))
+	if (is_valid_point(fdf, point))
 	{
 		dst = fdf->data.addr + (point.y * fdf->data.line_length + point.x
 				* (fdf->data.bits_per_pixel / 8));
