@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 11:13:33 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 14:31:06 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:15:10 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_fdf {
 }	t_fdf;
 
 // events.c
-int		close_window();
+int		close_window(void);
 
 // gnl.c
 char	*get_next_line(int fd);
@@ -80,13 +80,17 @@ char	*get_next_line(int fd);
 // keys.c
 int		key_hook(int keycode, t_fdf *fdf);
 
+// keys2.c
+void	zoom_in_key(t_fdf *fdf);
+void	zoom_out_key(t_fdf *fdf);
+
 // lines.c
 void	render_lines(t_fdf *fdf);
 
 // main.c
 void	render_window(t_fdf *fdf);
 void	create_window(t_fdf *fdf);
-t_fdf *fdf();
+t_fdf	*fdf(void);
 
 // mouse.c
 int		mouse_hook(int keycode, void *f);
@@ -97,7 +101,6 @@ void	parse_file(t_fdf *fdf);
 // plot.c
 void	plot_line(t_fdf *fdf, t_vect2 initial, t_vect2 final);
 
-
 // render.c
 t_vect2	isometric_point(t_fdf *fdf, t_vect3 point);
 void	pixel_put(t_fdf *fdf, t_vect2 point);
@@ -105,10 +108,6 @@ void	render_map(t_fdf *fdf);
 
 // utils.c
 int		count_points(char *file);
-void	print_3d_points(t_vect3 *points, int size);
-void	print_2d_points(t_vect2 *points, int size);
-int		isValidPoint(t_fdf *fdf, t_vect2 point);
-
-
+int		is_valid_point(t_fdf *fdf, t_vect2 point);
 
 #endif
