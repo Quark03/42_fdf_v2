@@ -1,6 +1,7 @@
 NAME = fdf
 
-SRCS =  ./src/gnl.c \
+SRCS =  ./src/events.c \
+		./src/gnl.c \
 		./src/keys.c \
 		./src/lines.c \
 		./src/main.c \

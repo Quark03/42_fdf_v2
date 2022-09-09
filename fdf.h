@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 11:13:33 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 12:48:50 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:31:06 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # endif
 
 // Structs
-
 typedef struct s_vect3 {
 	int	x;
 	int	y;
@@ -72,6 +71,9 @@ typedef struct s_fdf {
 	int		zoom;
 }	t_fdf;
 
+// events.c
+int		close_window();
+
 // gnl.c
 char	*get_next_line(int fd);
 
@@ -84,10 +86,10 @@ void	render_lines(t_fdf *fdf);
 // main.c
 void	render_window(t_fdf *fdf);
 void	create_window(t_fdf *fdf);
-
+t_fdf *fdf();
 
 // mouse.c
-int		mouse_hook(int keycode, t_fdf *fdf);
+int		mouse_hook(int keycode, void *f);
 
 // parse.c
 void	parse_file(t_fdf *fdf);
@@ -106,5 +108,7 @@ int		count_points(char *file);
 void	print_3d_points(t_vect3 *points, int size);
 void	print_2d_points(t_vect2 *points, int size);
 int		isValidPoint(t_fdf *fdf, t_vect2 point);
+
+
 
 #endif

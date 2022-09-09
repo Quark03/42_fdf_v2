@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 11:52:35 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 12:39:43 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:31:16 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,6 @@ void	zoom_out_key(t_fdf *fdf)
 	}
 }
 
-void	close_window(t_fdf *fdf)
-{
-	mlx_destroy_window(fdf->mlx, fdf->mlx_win);
-	exit(0);
-}
-
 int	key_hook(int keycode, t_fdf *fdf)
 {
 	if (keycode == 119)
@@ -94,6 +88,6 @@ int	key_hook(int keycode, t_fdf *fdf)
 	else if (keycode == 65364)
 		zoom_out_key(fdf);
 	else if (keycode == 65307)
-		close_window(fdf);
+		close_window();
 	return(0);
 }
