@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 11:12:52 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 15:13:02 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:54:06 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	plot(t_fdf *fdf, int x, int y)
 
 	temp.x = x;
 	temp.y = y;
-	temp.color = 0x0891b2;
+	temp.color = 0x4d4d4d;
 	pixel_put(fdf, temp);
 }
 
