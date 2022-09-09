@@ -3,6 +3,7 @@ NAME = fdf
 SRCS =  ./src/events.c \
 		./src/gnl.c \
 		./src/keys.c \
+		./src/keys2.c \
 		./src/lines.c \
 		./src/main.c \
 		./src/mouse.c \
@@ -23,12 +24,12 @@ REMOVE = rm -f
 
 all:	$(NAME)
 
-.c.o:	
+.c.o:
 	$(COMPILE) -c $< -o $@
 
 $(NAME):	$(LIBFT) $(OBJS)
 	$(COMPILE) $(OBJS) $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
-	
+
 
 $(LIBFT):
 	$(MAKE) -sC ./libft
