@@ -6,10 +6,9 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 11:52:35 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 14:31:16 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:46:32 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../fdf.h"
 /*
@@ -54,25 +53,6 @@ void	move_right(t_fdf *fdf)
 	render_window(fdf);
 }
 
-void	zoom_in_key(t_fdf *fdf)
-{
-	ft_putstr_fd("Zoom In\n", 1);
-	fdf->zoom += 2;
-	ft_putstr_fd("Zoom In 2\n", 1);
-	render_window(fdf);
-}
-
-void	zoom_out_key(t_fdf *fdf)
-{
-	if (fdf->zoom > 0)
-	{
-		ft_putstr_fd("Zoom Out\n", 1);
-		fdf->zoom -= 2;
-		ft_putstr_fd("Zoom Out 2\n", 1);
-		render_window(fdf);
-	}
-}
-
 int	key_hook(int keycode, t_fdf *fdf)
 {
 	if (keycode == 119)
@@ -89,5 +69,5 @@ int	key_hook(int keycode, t_fdf *fdf)
 		zoom_out_key(fdf);
 	else if (keycode == 65307)
 		close_window();
-	return(0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:09:07 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/07 12:09:23 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:47:39 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ void	walk_array(t_fdf *fdf, t_vect2 vect, int offset, int jump)
 	i = 0;
 	while (vect.y + i < fdf->points_size)
 	{
-		if (jump == -1) 
+		if (jump == -1)
 			plot_line(fdf, fdf->points2[vect.x + i], fdf->points2[vect.y + i]);
 		else
 		{
 			if ((i + offset) % jump != 0)
-				plot_line(fdf, fdf->points2[vect.x + i], fdf->points2[vect.y + i]);
+				plot_line(fdf, fdf->points2[vect.x + i],
+					fdf->points2[vect.y + i]);
 		}
 		i++;
 	}
@@ -32,7 +33,7 @@ void	walk_array(t_fdf *fdf, t_vect2 vect, int offset, int jump)
 
 void	render_lines(t_fdf *fdf)
 {
-	t_vect2 rel;
+	t_vect2	rel;
 
 	rel.x = 0;
 	rel.y = 1;
