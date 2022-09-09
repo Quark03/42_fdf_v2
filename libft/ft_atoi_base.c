@@ -6,13 +6,13 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:43:37 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/07 11:09:14 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:43:02 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_iswhitespace(char const c)
+int	ft_iswhitespace(char const c)
 {
 	if (c == ' ' || c == '\n' || c == '\t' || c == '\v'
 		|| c == '\r' || c == '\f')
@@ -22,10 +22,13 @@ int		ft_iswhitespace(char const c)
 
 int	base(int c, int base)
 {
-	char *str = "0123456789abcdef";
-	char *str2 = "0123456789ABCDEF";
-	int  i = 0;
+	char	*str;
+	char	*str2;
+	int		i;
 
+	i = 0;
+	str = "0123456789abcdef";
+	str2 = "0123456789ABCDEF";
 	while (i < base)
 	{
 		if (c == str[i] || c == str2[i])
@@ -35,11 +38,15 @@ int	base(int c, int base)
 	return (-1);
 }
 
-int ft_atoi_base(const char *str, int str_base)
+int	ft_atoi_base(const char *str, int str_base)
 {
-	int	nb = 0;
-	int	negatif = 0;
-	int	i = 0;
+	int	nb;
+	int	negatif;
+	int	i;
+
+	i = 0;
+	negatif = 0;
+	nb = 0;
 	while (ft_iswhitespace(str[i]))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
