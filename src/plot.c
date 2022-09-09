@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 11:12:52 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/01 11:36:35 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:13:21 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,18 +105,20 @@ void	plot_line(t_fdf *fdf, t_vect2 initial, t_vect2 final)
 	y0 = initial.y;
 	x1 = final.x;
 	y1 = final.y;
-	if ( abs(y1 - y0) < abs(x1 - x0) )
-	{
-		if (x0 > x1)
-			plot_line_low(fdf, x1, y1, x0, y0);
+	if (isValidPoint(fdf, initial) || isValidPoint(fdf, final)) {
+		if ( abs(y1 - y0) < abs(x1 - x0) )
+		{
+			if (x0 > x1)
+				plot_line_low(fdf, x1, y1, x0, y0);
+			else
+				plot_line_low(fdf, x0, y0, x1, y1);
+		}
 		else
-			plot_line_low(fdf, x0, y0, x1, y1);
-	}
-	else
-	{
-		if (y0 > y1)
-			plot_line_height(fdf, x1, y1, x0, y0);
-		else
-			plot_line_height(fdf, x0, y0, x1, y1);
+		{
+			if (y0 > y1)
+				plot_line_height(fdf, x1, y1, x0, y0);
+			else
+				plot_line_height(fdf, x0, y0, x1, y1);
+		}
 	}
 }

@@ -6,14 +6,22 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:59:57 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/07 12:21:59 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:26:15 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
+void	render_window(t_fdf *fdf, t_vect2 offset, int zoom)
+{
+	
+}
+
+
+
+
 /**
- * Render the window
+ * Creates the window
  */
 void	create_window(t_fdf *fdf)
 {
@@ -25,6 +33,7 @@ void	create_window(t_fdf *fdf)
 		&fdf->data.line_length, &fdf->data.endian);
 	mlx_key_hook(fdf->mlx_win, key_hook, fdf);
 	mlx_mouse_hook(fdf->mlx_win, mouse_hook, fdf);
+	ft_putstr_fd("Rendering Map ......\n", 1);
 	render_map(fdf);
 	ft_putstr_fd("Drawing ......\n", 1);
 	render_lines(fdf);
@@ -46,12 +55,13 @@ int	main(int ac, char **av)
 		ft_putstr_fd("Could not open file\n", 1);
 		return (-1);
 	}
+	ft_putstr_fd("Reading ......\n", 1);
 	fdf.points3 = malloc(sizeof(t_vect3) * count_points(av[1]));
 	if (!fdf.points3)
 		return (-1);
 	ft_putstr_fd("Parsing ......\n", 1);
 	parse_file(&fdf);
-	ft_putstr_fd("Rendering ......\n", 1);
+	ft_putstr_fd("Creating Window ......\n", 1);
 	create_window(&fdf);
 	free(fdf.points3);
 	free(fdf.points2);

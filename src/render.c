@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:31:26 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/07 12:07:36 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:16:17 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ void	pixel_put(t_fdf *fdf, t_vect2 point)
 {
 	char	*dst;
 
-	dst = fdf->data.addr + (point.y * fdf->data.line_length + point.x * (fdf->data.bits_per_pixel / 8));
-	*(unsigned int *)dst = point.color;
+	if (isValidPoint(fdf, point)) {
+		dst = fdf->data.addr + (point.y * fdf->data.line_length + point.x * (fdf->data.bits_per_pixel / 8));
+		*(unsigned int *)dst = point.color;
+	}
 }
 
 /**
@@ -53,6 +55,7 @@ void	render_map(t_fdf *fdf)
 	if (!fdf->points2)
 		return ;
 	i = 0;
+	ft_putstr_fd("Rendering ......\n", 1);
 	while (i < fdf->points_size)
 	{
 		fdf->points2[i] = isometric_point(fdf, fdf->points3[i]);
