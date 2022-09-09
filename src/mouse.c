@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 12:00:09 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 14:26:11 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:51:40 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 SCROLL_UP => 4
 SCROLL_DOWN => 5
 */
-
 
 void	zoom_in(t_fdf *fdf)
 {
@@ -39,8 +38,8 @@ int	mouse_hook(int keycode, void *f)
 {
 	(void) f;
 	if (keycode == 4)
-		 zoom_in(fdf());
+		zoom_in(fdf());
 	else if (keycode == 5)
 		zoom_out(fdf());
-	return(0);
+	return (0);
 }
