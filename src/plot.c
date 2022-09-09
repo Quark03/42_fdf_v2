@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 11:12:52 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 11:13:21 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:08:48 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,103 +22,112 @@ void	plot(t_fdf *fdf, int x, int y)
 	pixel_put(fdf, temp);
 }
 
-void	plot_line_height(t_fdf *fdf, int x0, int y0, int x1, int y1)
-{
+typedef struct s_plot_vars1 {
 	int	dx;
 	int	dy;
 	int	xi;
-	int	D;
+	int	d;
 	int	x;
 	int	y;
+}	t_plot_args1;
 
-	y = y0;
-	dx = x1 - x0;
-	dy = y1 - y0;
-	xi = 1;
-	if (dx < 0)
-	{
-		xi = -1;
-		dx = -dx;
-	}
-	D = (2 * dx) - dy;
-	x = x0;
-	while (y < y1)
-	{
-		plot(fdf, x, y);
-		if (D > 0)
-		{
-			x = x + xi;
-			D = D + (2 * (dx - dy));
-		}
-		else
-		{
-			D = D + 2 * dx;
-		}
-		y++;
-	}
-}
-
-void	plot_line_low(t_fdf *fdf, int x0, int y0, int x1, int y1)
-{
+typedef struct s_plot_vars2 {
 	int	dx;
 	int	dy;
 	int	yi;
-	int	D;
+	int	d;
 	int	y;
 	int	x;
+}	t_plot_args2;
 
-	dx = x1 - x0;
-	dy = y1 - y0;
-	yi = 1;
-	if (dy < 0)
+void	plot_line_height(int x0, int y0, int x1, int y1)
+{
+	t_plot_args1	args;
+
+	args.y = y0;
+	args.dx = x1 - x0;
+	args.dy = y1 - y0;
+	args.xi = 1;
+	if (args.dx < 0)
 	{
-		yi = -1;
-		dy = -dy;
+		args.xi = -1;
+		args.dx = -args.dx;
 	}
-	D = (2 * dy) - dx;
-	y = y0;
-	x = x0;
-	while (x < x1)
+	args.d = (2 * args.dx) - args.dy;
+	args.x = x0;
+	while (args.y < y1)
 	{
-		plot(fdf, x, y);
-		if (D > 0)
+		plot(fdf(), args.x, args.y);
+		if (args.d > 0)
 		{
-			y = y + yi;
-			D = D + (2 * (dy - dx));
+			args.x = args.x + args.xi;
+			args.d = args.d + (2 * (args.dx - args.dy));
 		}
 		else
-		{
-			D = D + 2 * dy;
-		}
-		x++;
+			args.d = args.d + 2 * args.dx;
+		args.y++;
 	}
 }
 
-void	plot_line(t_fdf *fdf, t_vect2 initial, t_vect2 final)
+void	plot_line_low(int x0, int y0, int x1, int y1)
 {
+	t_plot_args2	args;
+
+	args.dx = x1 - x0;
+	args.dy = y1 - y0;
+	args.yi = 1;
+	if (args.dy < 0)
+	{
+		args.yi = -1;
+		args.dy = -args.dy;
+	}
+	args.d = (2 * args.dy) - args.dx;
+	args.y = y0;
+	args.x = x0;
+	while (args.x < x1)
+	{
+		plot(fdf(), args.x, args.y);
+		if (args.d > 0)
+		{
+			args.y = args.y + args.yi;
+			args.d = args.d + (2 * (args.dy - args.dx));
+		}
+		else
+			args.d = args.d + 2 * args.dy;
+		args.x++;
+	}
+}
+
+typedef struct s_plot_vars {
 	int	x0;
 	int	y0;
 	int	x1;
 	int	y1;
+}	t_plot_vars;
 
-	x0 = initial.x;
-	y0 = initial.y;
-	x1 = final.x;
-	y1 = final.y;
-	if (isValidPoint(fdf, initial) || isValidPoint(fdf, final)) {
-		if ( abs(y1 - y0) < abs(x1 - x0) )
+void	plot_line(t_fdf *fdf, t_vect2 initial, t_vect2 final)
+{
+	t_plot_vars	vars;
+
+	vars.x0 = initial.x;
+	vars.y0 = initial.y;
+	vars.x1 = final.x;
+	vars.y1 = final.y;
+	if (isValidPoint(fdf, initial) || isValidPoint(fdf, final))
+	{
+		if (abs(vars.y1 - vars.y0) < abs(vars.x1 - vars.x0))
 		{
-			if (x0 > x1)
-				plot_line_low(fdf, x1, y1, x0, y0);
+			if (vars.x0 > vars.x1)
+				plot_line_low(vars.x1, vars.y1, vars.x0, vars.y0);
 			else
-				plot_line_low(fdf, x0, y0, x1, y1);
+				plot_line_low(vars.x0, vars.y0, vars.x1, vars.y1);
 		}
 		else
 		{
-			if (y0 > y1)
-				plot_line_height(fdf, x1, y1, x0, y0);
+			if (vars.y0 > vars.y1)
+				plot_line_height(vars.x1, vars.y1, vars.x0, vars.y0);
 			else
-				plot_line_height(fdf, x0, y0, x1, y1);
+				plot_line_height(vars.x0, vars.y0, vars.x1, vars.y1);
 		}
 	}
 }
