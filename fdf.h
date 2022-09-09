@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 11:13:33 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/07 12:20:47 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:48:50 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct s_fdf {
 	int		points_size;
 	t_map	map;
 	t_data	data;
+	t_vect2	offset;
+	int		zoom;
 }	t_fdf;
 
 // gnl.c
@@ -80,8 +82,9 @@ int		key_hook(int keycode, t_fdf *fdf);
 void	render_lines(t_fdf *fdf);
 
 // main.c
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	render_window(t_fdf *fdf);
 void	create_window(t_fdf *fdf);
+
 
 // mouse.c
 int		mouse_hook(int keycode, t_fdf *fdf);
@@ -102,5 +105,6 @@ void	render_map(t_fdf *fdf);
 int		count_points(char *file);
 void	print_3d_points(t_vect3 *points, int size);
 void	print_2d_points(t_vect2 *points, int size);
+int		isValidPoint(t_fdf *fdf, t_vect2 point);
 
 #endif
