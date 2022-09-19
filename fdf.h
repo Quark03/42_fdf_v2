@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 11:13:33 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/19 11:39:25 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:43:48 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	render_lines(t_fdf *fdf);
 
 // main.c
 void	render_window(t_fdf *fdf);
-void	create_window();
+void	create_window(t_fdf *fdf);
 t_fdf	*fdf(void);
 
 // mouse.c
