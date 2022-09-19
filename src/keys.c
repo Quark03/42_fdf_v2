@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 11:52:35 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 14:46:32 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/19 09:44:44 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,24 @@ ESC => 65307
 
 void	move_up(t_fdf *fdf)
 {
-	ft_putstr_fd("Moving Up\n", 1);
 	fdf->offset.y -= 10;
 	render_window(fdf);
 }
 
 void	move_down(t_fdf *fdf)
 {
-	ft_putstr_fd("Moving Down\n", 1);
 	fdf->offset.y += 10;
 	render_window(fdf);
 }
 
 void	move_left(t_fdf *fdf)
 {
-	ft_putstr_fd("Moving Left\n", 1);
 	fdf->offset.x -= 10;
 	render_window(fdf);
 }
 
 void	move_right(t_fdf *fdf)
 {
-	ft_putstr_fd("Moving Right\n", 1);
 	fdf->offset.x += 10;
 	render_window(fdf);
 }
