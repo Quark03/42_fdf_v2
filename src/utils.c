@@ -6,11 +6,23 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:10:05 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 15:48:15 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/19 11:17:22 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+
+int	ft_counter(char **points)
+{
+	int	p;
+
+	p = 0;
+	while (points[p] != 0)
+	{
+		p++;
+	}
+	return p;
+}
 
 /**
  * Count the amount of points to process
@@ -22,25 +34,24 @@ int	count_points(char *file)
 	char	*line;
 	char	**points;
 	int		counter;
-	int		p;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (-1);
 	counter = 0;
 	line = get_next_line(fd);
+	points = NULL;
 	while (line != 0)
 	{
 		points = ft_split(line, ' ');
-		p = 0;
-		while (points[p] != 0)
-		{
-			counter++;
-			p++;
-		}
+		counter += ft_counter(points);
+		if (line != NULL)
+			free(line);
+		free_split(points);
 		line = get_next_line(fd);
 	}
 	close(fd);
+	free(line);
 	return (counter);
 }
 
@@ -73,4 +84,18 @@ void	plot_points(void)
 	i = 0;
 	while (i < fdf()->points_size)
 		pixel_put(fdf(), fdf()->points2[i++]);
+}
+
+/**
+ * Free the ft_split memory
+ * @param ptr 
+ */
+void	free_split(char **ptr)
+{
+	int	i;
+
+	i = 0;
+	while (ptr[i])
+		free(ptr[i++]);
+	free(ptr);
 }

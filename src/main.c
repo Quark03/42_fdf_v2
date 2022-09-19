@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:59:57 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/09 15:52:45 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/19 11:35:05 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 void	render_window(t_fdf *fdf)
 {
 	if (fdf->data.img)
+	{
 		mlx_destroy_image(fdf->mlx, fdf->data.img);
+		free(fdf->points2);
+	}
 	fdf->data.img = mlx_new_image(fdf->mlx, fdf->map.width, fdf->map.height);
 	fdf->data.addr = mlx_get_data_addr(fdf->data.img, &fdf->data.bits_per_pixel,
 			&fdf->data.line_length, &fdf->data.endian);
@@ -26,7 +29,6 @@ void	render_window(t_fdf *fdf)
 	render_lines(fdf);
 	plot_points();
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_win, fdf->data.img, 0, 0);
-	free(fdf->points2);
 }
 
 /**
@@ -75,6 +77,6 @@ int	main(int ac, char **av)
 	parse_file(fdf());
 	ft_putstr_fd("Creating Window ......\n", 1);
 	create_window(fdf());
-	free(fdf()->points3);
+	
 	return (0);
 }
