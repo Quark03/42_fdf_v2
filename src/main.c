@@ -6,7 +6,7 @@
 /*   By: acinca-f <acinca-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 10:59:57 by acinca-f          #+#    #+#             */
-/*   Updated: 2022/09/19 11:35:05 by acinca-f         ###   ########.fr       */
+/*   Updated: 2022/09/19 11:48:33 by acinca-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ void	render_window(t_fdf *fdf)
 /**
  * Creates the window
  */
-void	create_window(t_fdf *fdf)
+void	create_window()
 {
-	fdf->mlx = mlx_init();
-	fdf->mlx_win = mlx_new_window(fdf->mlx, fdf->map.width,
-			fdf->map.height, "FDF");
-	fdf->offset.x = 0;
-	fdf->offset.y = 0;
-	fdf->zoom = 20;
-	mlx_hook(fdf->mlx_win, 17, 0, close_window, fdf);
-	mlx_key_hook(fdf->mlx_win, key_hook, fdf);
-	mlx_mouse_hook(fdf->mlx_win, mouse_hook, fdf);
-	render_window(fdf);
-	mlx_loop(fdf->mlx);
+	fdf()->mlx = mlx_init();
+	fdf()->mlx_win = mlx_new_window(fdf()->mlx, fdf()->map.width,
+			fdf()->map.height, "FDF");
+	fdf()->offset.x = 0;
+	fdf()->offset.y = 0;
+	fdf()->zoom = 20;
+	mlx_hook(fdf()->mlx_win, 17, 0, close_window, fdf());
+	mlx_key_hook(fdf()->mlx_win, key_hook, fdf());
+	mlx_mouse_hook(fdf()->mlx_win, mouse_hook, fdf());
+	render_window(fdf());
+	mlx_loop(fdf()->mlx);
 }
 
 t_fdf	*fdf(void)
@@ -76,7 +76,6 @@ int	main(int ac, char **av)
 	ft_putstr_fd("Parsing ......\n", 1);
 	parse_file(fdf());
 	ft_putstr_fd("Creating Window ......\n", 1);
-	create_window(fdf());
-	
+	create_window();
 	return (0);
 }
