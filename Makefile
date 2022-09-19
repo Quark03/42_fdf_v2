@@ -27,12 +27,15 @@ all:	$(NAME)
 .c.o:
 	$(COMPILE) -c $< -o $@
 
-$(NAME):	$(LIBFT) $(OBJS)
+$(NAME):	mlx $(LIBFT) $(OBJS)
 	$(COMPILE) $(OBJS) $(MLX) $(LIBFT) -lXext -lX11 -lm -lz -o $(NAME)
 
 
 $(LIBFT):
 	$(MAKE) -sC ./libft
+
+mlx:
+	$(MAKE) -C ./mlx
 
 clean:
 	$(REMOVE) $(OBJS)
@@ -43,4 +46,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all mlx clean fclean re
